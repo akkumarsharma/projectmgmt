@@ -1,0 +1,34 @@
+<div class="row filterBox">
+    <common-filter [SearchCriteria]="SearchCriteria" [collection]="resourceModelCollection" (outCollectionVar)="outCollectionVar($event)"></common-filter>
+</div>
+<div class="row tablestyle" *ngIf="resourceFilteredModelCollection.length>0 && resourceFilteredModelCollection !=undefined">
+    <div class="row headerStyle">
+        <div class="col-md-3 col-sm-3 col-xs-3 header">ResourceId
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 header">ResourceName
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 header">ResourceSupervisor
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 header">Action
+        </div>
+    </div>
+    <div class="row bodyStyle" *ngFor="let r of resourceFilteredModelCollection">
+        <div class="col-md-3 col-sm-3 col-xs-3">{{r.ResourceId}}
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">{{r.ResourceName}}
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">{{r.ResourceSupervisor}}
+        </div>
+        <!--<div class="col-md-3 col-sm-3 col-xs-3">
+            <img *ngIf="IsAdd(r.ResourceId)" (click)="AddResource(r.ResourceId)" src="assets/Images/add.png" style="height: 20px;cursor: pointer;">
+            <img *ngIf="IsEdit(r.ResourceId)" (click)="EditResource(r.ResourceId)" src="assets/Images/edit-icon-15.png" style="height: 20px;cursor: pointer;">
+        </div>-->
+        <project-selected-resource-extra-window
+        [resourceProjectAssignment]="resourceProjectAssignment" 
+        [IsAddorEdit]="IsAddorEdit"
+        [ProjectCode]="ProjectCode"
+        [ResourceId]="r.ResourceId"
+         (UpdateProjectAssignmentList)="UpdateProjectAssignmentList($event)">
+        </project-selected-resource-extra-window>
+    </div>
+</div>

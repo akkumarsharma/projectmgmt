@@ -1,0 +1,27 @@
+<div class="row col-md-offset-1">
+  <common-filter [SearchCriteria]="SearchCriteria" [collection]="resourceModelCollection" (outCollectionVar)="outCollectionVar($event)"></common-filter>
+  <table class="table table-bordered" *ngIf="resourceFilteredModelCollection.length>0 && resourceFilteredModelCollection !=undefined">
+    <thead>
+      <tr>
+        <th>ResourceId</th>
+        <th>ResourceName</th>
+        <th>ResourceSupervisor</th>
+        <th>ResourceDOJ</th>
+        <!--<th>AllocationPercentage</th>
+              <th>StartDate</th>
+              <th>EndDate</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of resourceFilteredModelCollection">
+        <td><span [ngClass]="CheckIfProjectExist(r.ResourceId)" (click)="openDialog(r.ResourceId)">{{r.ResourceId}}</span></td>
+        <td>{{r.ResourceName}}</td>
+        <td>{{r.ResourceSupervisor}}</td>
+        <td>{{r.ResourceDOJ}}</td>
+        <!--<td>{{r.AllocationPercentage}}</td>
+              <td>{{r.StartDate}}</td>
+              <td>{{r.EndDate}}</td>-->
+      </tr>
+    </tbody>
+  </table>
+</div>

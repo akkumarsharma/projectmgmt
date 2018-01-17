@@ -1,0 +1,6 @@
+<div *ngIf="dataUp !=undefined && dataUp.length>0">
+    <ul class="ulParentHoerarchy" *ngFor="let resource of dataUp">
+        <li class="parentTreeNode"><span class="treeNodeStyle">{{resource.Name}}</span></li>
+        <li class="parentTreeNodeArrow"><img src="assets/Images/up-arrow-sign.png" style="width: 30px;"></li>
+    </ul>
+</div>

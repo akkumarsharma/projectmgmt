@@ -1,0 +1,47 @@
+<!--<div *ngIf="message">{{message.text}}</div>-->
+<!--<div *ngFor="let state of msgArray">
+    {{state}}
+</div>-->
+<div class="container-fluid" style="margin-bottom:100px;">
+    <div lass="row">
+        <div class="col-md-10" *ngIf="IsHomePage">
+            <!--<img src="../assets/Images/project-management-graphic.jpg" style="height: 100%;width:100%">-->
+             <img src="assets/Images/project-management-graphic.jpg" style="height: 100%;width:100%">
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:30px;" *ngIf="!IsHomePage">
+        <div class="col-md-8">
+
+            <ul class="steps steps-5">
+                <breadcrumb-menu *ngFor="let menudetail of breadcrumbList" [menuItemInput]="menudetail"></breadcrumb-menu>
+            </ul>
+            <h3><span class="headMsg">{{screenmgs}}</span></h3>
+            <!--<ul class="steps steps-5">
+  <li class="current"><a href="#" title="" ><em>Step 1:</em><span>Create new project</span></a></li>
+  <li><a href="#" title=""><em>Step 2:</em><span>Project Resource Allocation</span></a></li>-->
+            <!--<li class="current"><a href="#" title=""><em>Step 3: XXXXXXXX</em><span>Et nequ a quam turpis duisi</span></a></li>
+  <li><a href="#" title=""><em>Step 4: XXXXXXXX</em><span>Et nequ a quam turpis duisi</span></a></li>
+  <li><a href="#" title=""><em>Step 5: XXXXXXXX</em><span>Et nequ a quam turpis duisi</span></a></li>-->
+            <!--</ul>
+            <h3>{{screenmgs}}</h3>-->
+        </div>
+    </div>
+    <div class="row" *ngIf="!IsHomePage">
+        <div class="col-md-10">
+            <project-new *ngIf="isShowProjectNew"></project-new>
+            <project-event-new *ngIf="isShowProjectEventNew" [IsFromProjectTile]="IsFromProjectTile"></project-event-new>
+            <project-selected *ngIf="isShowProjectSelected" [NewId]="NewId"></project-selected>
+            <project-resource-allocation *ngIf="isShowProjectResourceAllocation" [NewId]="NewId"></project-resource-allocation>
+            <sub-activity-creation *ngIf="IsSubActivityCreation" [NewId]="NewId"></sub-activity-creation>
+            <resource-new *ngIf="IsResourceShowNewResourceCreation"></resource-new>
+            <activity-new-independent *ngIf="IsIndependentActivityCreation"></activity-new-independent>
+            <activity-summary *ngIf="IsActivitySummary"></activity-summary>
+            <resource-summary *ngIf="IsResourceSummary"></resource-summary>
+            <resource-selected *ngIf="IsShowResourceSelected" [NewId]="NewId"></resource-selected>
+        </div>
+        <div class="col-md-2">
+            <!--<img src="../../assets/Images/gototop.png" *ngIf="IsGotoTop" value="Top" (click)="GotoTop()" style="position:fixed;width:100px;cursor:pointer;">-->
+             <img src="assets/Images/gototop.png" *ngIf="IsGotoTop" value="Top" (click)="GotoTop()" style="position:fixed;width:100px;cursor:pointer;">
+        </div>
+    </div>
+</div>

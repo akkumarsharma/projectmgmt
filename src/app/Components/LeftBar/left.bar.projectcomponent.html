@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-sm-12" style="padding:0px;">
+      <ul>
+        <li>
+          <a (click)="newProjectClick()">Create Project</a>
+        </li>
+        <li>
+          <a (click)="newProjectEventClick()">Create Activity</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <!--<div class="col-md-12" #abc>-->
+      <div class="col-md-12">
+      <mat-input-container style="width: 100%;">
+        <!--<input mdInput placeholder="" [mdAutocomplete]="auto" [formControl]="stateCtrl" [(ngModel)]="state" (ngModelChange)="onChange($event)" class="textbox">-->
+        <input matInput placeholder="Search Projects" [matAutocomplete]="auto" [formControl]="projectCtrl" [(ngModel)]="project" (ngModelChange)="onChange($event)">
+      </mat-input-container>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let project of filteredProjects | async" [value]="project">
+          {{ project }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+</div>

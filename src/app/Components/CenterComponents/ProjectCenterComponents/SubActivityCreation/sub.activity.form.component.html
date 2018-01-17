@@ -1,0 +1,82 @@
+<form class="form-horizontal" novalidate (ngSubmit)="onSubmit(subActivityForm)" [formGroup]="subActivityForm">
+  <div class="form-group">
+    <!--<label for="inputEmail" class="col-lg-2 control-label">Event Name</label>-->
+    <div class="col-md-12">
+      <input type="text" class="form-control" id="" placeholder="Event Name" formControlName="EventNameControl"
+      [(ngModel)]="SubActivityName">
+      <control-messages [control]="subActivityForm.controls.EventNameControl"></control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <!--<label for="textArea" class="col-lg-2 control-label">Description</label>-->
+    <div class="col-md-12">
+      <textarea class="form-control" placeholder="Event Description" rows="5" id="textArea" formControlName="EventDescControl"
+      [(ngModel)]="SubActivityDesc"></textarea>
+      <control-messages [control]="subActivityForm.controls.EventDescControl"></control-messages>
+      <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
+    <div class="col-md-12">
+      <mat-form-field>
+        <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a start date" formControlName="eventStartDateControl"
+        [(ngModel)]="SubActivityStartDate">
+        <!--<md-error *ngIf="subActivityForm.eventStartDateControl.hasError('required')">
+          Start date is <strong>required</strong>
+        </md-error>-->
+        <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #startdatepicker></mat-datepicker>
+      </mat-form-field>
+      <control-messages [control]="subActivityForm.controls.eventStartDateControl"></control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
+    <div class="col-md-12">
+      <mat-form-field>
+        <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a end date" formControlName="eventEndDateControl"
+        [(ngModel)]="SubActivityEndDate">
+        <!--<md-error *ngIf="subActivityForm.eventEndDateControl.hasError('required')">
+          End date is <strong>required</strong>
+        </md-error>-->
+        <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #enddatepicker></mat-datepicker>
+      </mat-form-field>
+      <control-messages [control]="subActivityForm.controls.eventEndDateControl"></control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-primary" [disabled]="subActivityForm.invalid">Submit</button>
+      <button type="reset" class="btn btn-default">Cancel</button>
+    </div>
+  </div>
+
+</form>
+<app-onsubmit-projectdetail [(visible)]="showDialog">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+    
+      <span style="font-size: 36px;padding-left: 61px;">Success</span>
+      <br/>
+      <span>Please continue to create more subactivities</span>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-6 col-lg-6 col-xs-6">
+      <button (click)="SubActivityCancel()" class="btn" style="background: #0a6db1;;color: white;">Cancel</button>
+    </div>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-xs-push-1"style="padding-left: 32px;">
+      <button (click)="SubActivityContinue()" type="button" autofocus class="btn" style="background: #0a6db1;;color: white;">Continue</button>
+    </div>
+  </div>
+
+</app-onsubmit-projectdetail>

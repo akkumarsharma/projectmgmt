@@ -1,0 +1,45 @@
+<login-component *ngIf="!IsUserAuthenticated"></login-component>
+<app-top *ngIf="IsUserAuthenticated">
+</app-top>
+<div class="container-fluid" style="margin-top:100px;" *ngIf="IsUserAuthenticated">
+  <div class="row" loaderUnresponse>
+    <div class="col-md-2 col-sm-3">
+      <app-left></app-left>
+    </div>
+    <div class="col-md-10 col-sm-9">
+      <app-center></app-center>
+    </div>
+  </div>
+</div>
+
+
+<footer class="navbar navbar-inverse navbar-fixed-bottom" loaderUnresponse *ngIf="IsUserAuthenticated">
+  <div class="container">
+    <p style="color:white;text-align:center">Copyright &copy; Your Website 2017</p>
+  </div>
+</footer>
+
+
+
+<!--<div class="row" loaderUnresponse style="margin-top:51px;">
+  <div class="col-md-2 col-sm-3">
+    <div class="wrapper">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Collapsible Sidebar</h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li>
+            <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false">Project</a>
+            <ul class="collapse list-unstyled" id="projectSubmenu">
+              <li><a href="#">Page</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="col-md-10 col-sm-9">
+    <app-center></app-center>
+  </div>
+</div>-->

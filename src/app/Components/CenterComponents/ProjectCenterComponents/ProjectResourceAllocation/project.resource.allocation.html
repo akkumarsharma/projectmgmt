@@ -1,0 +1,101 @@
+<!--<div class="container" style="margin-left: 83px;"> -->
+<div class="row">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 col-md-offset-1">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                <mat-select placeholder="Search Criteria" [(ngModel)]="selectedCriteriaValue" (ngModelChange)="onChange($event)" style="padding-top:0px;">
+                    <mat-option *ngFor="let criteria of SearchCriteria" [value]="criteria.viewValue">
+                        {{ criteria.viewValue }}
+                    </mat-option>
+                </mat-select>
+
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Search Resources" [(ngModel)]="enteredResourceData" (ngModelChange)="filterResources()"
+                        [disabled]="isCriteriaNotSelected">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12" *ngIf="resourceModelDataFiltered !=null && resourceModelDataFiltered !=undefined && resourceModelDataFiltered.length>0">
+                <button class="btn" (click)="selectAllFilteresResources(1)" style="background: #0a6db1;;color: white;height:30px;padding: 0px 9px;">SELECT ALL</button>
+                <button class="btn" (click)="UnSelectAllFilteresResources(1)" style="background: #0a6db1;;color: white;height:30px;padding: 0px 9px;">CLEAR ALL</button>
+                <!--<button class="btn" (click)="SubmitResourceRecord()" style="background: #0a6db1;;color: white;height:30px;padding: 0px 9px;">SUBMIT</button>-->
+                {{NewId}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="row" style="margin-top:50px;" *ngIf="resourceModelDataFiltered !=null && resourceModelDataFiltered !=undefined && resourceModelDataFiltered.length>0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row headerResourceTable">
+
+                            <div class="col-md-3 col-xs-3">ResourceId</div>
+                            <div class="col-md-3 col-xs-3">ResourceName</div>
+                            <div class="col-md-3 col-xs-3">ResourceSupervisor</div>
+                            <div class="col-md-3 col-xs-3">IsAllocation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="resourceModelDataFiltered !=null && resourceModelDataFiltered !=undefined && resourceModelDataFiltered.length>0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row" style="margin: 0 0;border-bottom: 2px solid #0a6db1;font-family: serif;">
+                            <project-resource-individual-allocation *ngFor="let r of resourceModelDataFiltered" 
+                            [resourceDetail]="r" 
+                            [changeCap]="testIt" 
+                            [reflectChangeInputProp]="reflectChange"
+                            [isCurrentResourceAllocatedList]="isCurrentResourceAllocatedList"
+                                (resourceProjectModelVariable)="resourceProjectModelVariable($event)" 
+                                (ClearResourceProjectAllocation)="ClearResourceProjectAllocation($event)">
+                                <!--(reflectChangeInputPropParent)="reflectChangeInputPropParent()">-->
+                            </project-resource-individual-allocation>
+                        </div>
+                    </div>
+                    <!--<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 col-md-offset-1" style="border-bottom: 2px solid #0a6db1;">
+            </div>-->
+                </div>
+                <div class="row" style="margin-top:50px;" *ngIf="resourceModelDataFiltered ==null || resourceModelDataFiltered ==undefined || resourceModelDataFiltered.length==0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row" style="text-align: center;background: #0a6db1;margin:0;padding: 6px;color: white;">
+                            No Records found
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="row" style="text-align: center;
+    background: #0a6db1;
+    padding: 6px;
+    margin-top: 50px;
+    color: white;">
+                    Resource Allocation List
+                     <span style="margin-left:10px;" *ngIf="Isupdate_expression">{{update_expression}}</span>
+                </div>
+                <div class="row" style="background: azure;
+    text-align: center;
+    padding: 6px;
+    color: #0a6db1;
+    font-weight: bolder;
+    border: 2px solid #0a6db1;" *ngIf="resourceProjectAllocationDetailModelList ==null || resourceProjectAllocationDetailModelList ==undefined || resourceProjectAllocationDetailModelList.length==0">
+                    No Resources allocated yet.
+                </div>
+                <div class="row" *ngIf="resourceProjectAllocationDetailModelList !=null && resourceProjectAllocationDetailModelList !=undefined && resourceProjectAllocationDetailModelList.length>0"
+                    style="background: azure;
+    padding: 6px;
+    color: #0a6db1;
+    font-weight: bolder;
+    border: 2px solid #0a6db1;" >
+    <div class="row" *ngFor="let resource of resourceProjectAllocationDetailModelList" style="margin:0;padding: 4px;">
+                    {{resourceName(resource.ResourceId)}}({{resource.ResourceId}})
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--</div>-->

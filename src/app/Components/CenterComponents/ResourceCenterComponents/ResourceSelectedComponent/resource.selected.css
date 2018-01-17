@@ -1,0 +1,152 @@
+/*.table tbody tr:nth-child(even){
+  background-color: #dcdcdc;
+}
+
+thead{
+    background: #337ab7;color: white;
+}
+
+
+
+
+.treeNodeStyle:before {
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	height: 42px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 2s ease;
+} 
+
+.treeNodeStyle:hover:before {
+	width: 100%;
+}
+
+.treeNodeStyle {
+	border: none;
+	background: #3a7999;
+	color: #f2f2f2;
+	padding: 7px;
+	font-size: 15px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+}
+
+.tree-compo-class > ul,li{
+	list-style: none;
+}
+
+.treeNodeMargin{
+	  margin:20px 10px;
+}
+
+
+.treeNodeMargin li::before {
+  content: "• ";
+  color: blue;
+}
+
+.tree-compo-class{
+margin: 3% 5%;
+}*/
+
+
+/*new css*/
+.table tbody tr:nth-child(even){
+  background-color: #dcdcdc;
+}
+
+thead{
+    background: #337ab7;color: white;
+}
+
+.treeNodeStyle {
+	    border: none;
+    background: #337ab7;
+    color: #f2f2f2;
+    padding: 7px;
+    font-size: 15px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+.tree-compo-class{
+margin: 1% 40px;
+}
+
+ul.ulTreeNode li {
+    position:relative; /* so that pseudoelements are positioned relatively to their "li"s*/
+    /* use padding-bottom instead of margin-bottom.*/ 
+    margin-bottom: 0; /* This overrides previously specified margin-bottom */
+    padding-bottom: 2.5em;
+}
+
+ul.ulTreeNode li:after {
+    /* bullets */
+    content: url('http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/RedDisc.svg/20px-RedDisc.svg.png');
+    position: absolute;
+    left: -26px;
+    top: 0px;
+}
+
+ul.ulTreeNode li:before {
+    /* lines */
+    content:"";
+    position: absolute;
+    left: -16px; /* adjust manually */
+    border-left: 1px solid black;
+    height: 100%;
+    width: 1px;
+}
+
+ul.ulTreeNode li:first-child:before {
+   /* first li's line */
+   top: 6px; /* moves the line down so that it disappears under the bullet. Adjust manually */
+}
+
+ul.ulTreeNode li:last-child:before {
+    /* last li's line */
+   height: 6px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
+}
+
+.ulTreeNode{
+	margin-top:20px
+}
+
+.tree-compo-class > ul,li{
+	list-style: none;
+}
+
+.hierarchyArrow{
+    width:30px;
+    cursor: pointer;
+}
+
+.parentTreeNode{
+    margin: 0 0 10px 0;
+}
+
+.parentTreeNodeArrow{
+    margin: 0 0 0 5px;
+}
+
+.yellowNode{
+        color: white;
+    text-shadow: 2px 2px 4px #000000;
+    padding: 8px;
+    border-radius: 5px;
+    background: crimson;
+}
+
+
+
+
+
+
+

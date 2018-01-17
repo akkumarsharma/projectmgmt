@@ -1,0 +1,36 @@
+thead{
+    background: #337ab7;color: white;
+}
+
+/*tbody:nth-child(even){
+  background-color: #dcdcdc;
+}*/
+/*tbody:nth-child(odd){
+  background-color: #aaaaaa;
+}*/
+.table tbody tr:nth-child(even){
+  background-color: #dcdcdc;
+}
+/*.table tbody tr:nth-child(even):hover{
+  background-color: #FAEBD7;
+}*/
+/*.table tbody tr:nth-child(odd){
+  background-color: red;
+}*/
+
+.link{
+  color: blue;
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.activityHeader{
+    background: #337ab7;
+    color: white;
+    padding: 8px 0;
+    font-weight: 600;
+}
+
+/*.hoverEffect:hover{
+  background-color: #FAEBD7;
+}*/

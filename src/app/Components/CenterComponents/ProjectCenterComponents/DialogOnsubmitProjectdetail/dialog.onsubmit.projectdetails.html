@@ -1,0 +1,8 @@
+<div [@dialog] *ngIf="visible" class="dialog">
+  <!--<img src="../../../../assets/Images/tick_green.png" style="height: 100px;padding-left: 80px;">-->
+  <img src="assets/Images/tick_green.png" style="height: 100px;padding-left: 80px;">
+  <ng-content></ng-content>
+  <!--<button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>-->
+</div>
+<div *ngIf="visible" class="overlay" style="border: 1px solid black;border-radius: 4px;"></div>
+<!--<div *ngIf="visible" class="overlay" (click)="close()"></div>-->

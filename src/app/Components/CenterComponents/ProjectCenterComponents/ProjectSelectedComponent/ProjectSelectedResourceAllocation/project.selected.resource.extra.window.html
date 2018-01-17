@@ -1,0 +1,37 @@
+<div class="col-md-3 col-sm-3 col-xs-3" #elementCtrl>
+    <img *ngIf="IsAdd()" (click)="AddResource()" src="assets/Images/add.png" style="height: 20px;cursor: pointer;">
+    <img *ngIf="IsEdit()" (click)="EditResource()" src="assets/Images/edit-icon-15.png" style="height: 20px;cursor: pointer;">
+</div>
+<div class="row extraWindow" *ngIf="IsAddorEdit">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
+            <mat-form-field style="width:100%">
+                <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a start date" [formControl]="eventStartDateControl"
+                    [(ngModel)]="eventStartDateBind">
+                <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #startdatepicker></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
+
+            <mat-form-field style="width:100%">
+                <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a end date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind">
+                <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #enddatepicker></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <input type="number" min="0" max="100" class="form-control" placeholder="% Allocation" [(ngModel)]="percentageAllocation" style="margin: 5px;">
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <button class="btn btnStyle" (click)="(GetResourceAssignmentId()==undefined) ? AddResourceRecord():EditResourceRecord()">Submit</button>
+        <button class="btn btnStyle" (click)="CancelResourceRecord()">Cancel</button>
+    </div>
+</div>

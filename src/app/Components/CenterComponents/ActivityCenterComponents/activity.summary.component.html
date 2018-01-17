@@ -1,0 +1,6 @@
+<div class="col-md-offset-1">
+      <common-filter [SearchCriteria]="SearchCriteria" [collection]="activityModelCollection" (outCollectionVar)="outCollectionVar($event)"></common-filter>
+    <project-selected-activity-tab *ngIf="activityModelCollection.length>0" [ActivityDetailForTab]="activityModelCollectionToSend"
+        [SubActivityDetailForTab]="subActivityModelCollection" [IsFromProjectSelected]="IsFromProjectSelected"></project-selected-activity-tab>
+
+</div>

@@ -1,0 +1,96 @@
+<form class="form-horizontal" novalidate (ngSubmit)="onSubmit(projectEventNewFrm)" [formGroup]="projectEventNewFrm">
+  <div class="form-group">
+    <!--<label for="inputEmail" class="col-lg-2 control-label">Event Name</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <input type="text" class="form-control" id="" placeholder="Event Name" formControlName="EventNameControl">
+      <control-messages [control]="projectEventNewFrm.controls.EventNameControl"></control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <!--<label for="textArea" class="col-lg-2 control-label">Description</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <textarea class="form-control" placeholder="Event Description" rows="5" id="textArea" formControlName="EventDescControl"></textarea>
+      <control-messages [control]="projectEventNewFrm.controls.EventDescControl"></control-messages>
+      <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+    </div>
+  </div>
+
+
+  <div class="form-group" *ngIf="IsFromProjectTile">
+    <!--<label for="projects" class="col-lg-2 control-label">Select Project</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <mat-input-container>
+        <input matInput placeholder="Projects" [matAutocomplete]="auto" [formControl]="projectCtrl" [(ngModel)]="project">
+      </mat-input-container>
+            <mat-error *ngIf="projectCtrl.hasError('required') &&  (projectCtrl.dirty || projectCtrl.touched)">
+          <span style="font-size: 75%;">Select a project.</span>
+        </mat-error>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let project of filteredProjects | async" [value]="project">
+          {{ project }}
+        </mat-option>
+      </mat-autocomplete>
+      <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <mat-form-field>
+        <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a date" [formControl]="eventStartDateControl" [(ngModel)]="eventStartDateBind">
+        <mat-error *ngIf="eventStartDateControl.hasError('required')">
+          Start date is <strong>required</strong>
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #startdatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <mat-form-field>
+        <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind">
+        <mat-error *ngIf="eventEndDateControl.hasError('required')">
+          End date is <strong>required</strong>
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #enddatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-1">
+      <button type="submit" class="btn btn-primary" [disabled]="projectEventNewFrm.invalid || eventStartDateControl.invalid ||eventEndDateControl.invalid">Submit</button>
+      <button type="reset" class="btn btn-default">Cancel</button>
+    </div>
+  </div>
+
+</form>
+<app-onsubmit-projectdetail [(visible)]="showDialog">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+    
+      <span style="font-size: 36px;padding-left: 61px;">Success</span>
+      <br/>
+      <span style="padding: 10px;">Please continue to create subactivities</span>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-6 col-lg-6 col-xs-6">
+      <button (click)="GotoHomePage()" class="btn" style="background: #0a6db1;;color: white;">Cancel</button>
+    </div>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-xs-push-1"style="padding-left: 32px;">
+      <button (click)="SubActivityCreation()" type="button" autofocus class="btn" style="background: #0a6db1;;color: white;">Continue</button>
+    </div>
+  </div>
+
+</app-onsubmit-projectdetail>

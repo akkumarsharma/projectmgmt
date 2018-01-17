@@ -1,0 +1,16 @@
+.unresponse{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+
+@media (min-height: 768px) {
+    #sidebar {
+    min-height: 100vh;
+    background: #7386D5;
+    }
+}
+

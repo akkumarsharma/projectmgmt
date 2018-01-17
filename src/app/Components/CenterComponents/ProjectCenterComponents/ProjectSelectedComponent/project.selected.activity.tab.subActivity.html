@@ -1,0 +1,21 @@
+<h3>Sub Activity Grid</h3>
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ActivityName</th>
+                <th>ActivityDesc</th>
+                <th>ActivityStartDate</th>
+                <th>ActivityEndDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of data.SubActivityDetailForTabIdSpecific">
+                <td>{{a.SubActivityName}}</td>
+                <td>{{a.SubActivityDesc}}</td>
+                <td>{{a.SubActivityStartDate}}</td>
+                <td>{{a.SubActivityEndDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+.headerStyle{
+    background: #337ab7;color: white;
+        margin: 0;
+    padding: 8px;
+}
+
+.tablestyle{
+    border: 1px solid #ddd;width: 75%;
+}
+
+.bodyStyle{
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.filterBox{
+    width: 75%;
+}
+
+.extraWindow{
+     margin: 0;
+    padding: 8px;
+    margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+  .tablestyle{
+    border: 1px solid #ddd;width: 100%;
+}
+.headerStyle{
+   word-break: break-all;
+}
+.filterBox{
+    width: 100%;
+}
+}
+
+.btnStyle{
+    background: #0a6db1;color: white;font-weight:bold;
+        margin: 5px;
+}

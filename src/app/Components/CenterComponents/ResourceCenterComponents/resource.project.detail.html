@@ -1,0 +1,21 @@
+<h3>Project Grid</h3>
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ProjectName</th>
+                <th>AllocationPercentage</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of data.ProjectDetailResourceSpecific">
+                <td>{{GetProjectName(a.ProjectCode)}}</td>
+                <td>{{a.AllocationPercentage}}</td>
+                <td>{{a.StartDate}}</td>
+                <td>{{a.EndDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

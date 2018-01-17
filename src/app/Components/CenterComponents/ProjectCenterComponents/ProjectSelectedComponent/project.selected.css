@@ -1,0 +1,53 @@
+thead{
+    background: #337ab7;color: white;
+}
+
+/*tbody:nth-child(even){
+  background-color: #dcdcdc;
+}*/
+/*tbody:nth-child(odd){
+  background-color: #aaaaaa;
+}*/
+.table tbody tr:nth-child(even){
+  background-color: #dcdcdc;
+}
+/*.table tbody tr:nth-child(odd){
+  background-color: red;
+}*/
+
+.subActivityLink{
+  color: blue;
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.activityHeader{
+    background: #337ab7;
+    color: white;
+    padding: 8px 0;
+    font-weight: 600;
+}
+
+.buttonLink{
+  background: #337ab7;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buttonLink:hover {
+    background: #555;
+}
+
+.headMsg {
+    font-family: cursive;
+  }
+
+  .linkStyle{
+   text-decoration: underline;
+    color: #0a6db1;
+    font-weight: bold;
+    cursor: pointer;
+}

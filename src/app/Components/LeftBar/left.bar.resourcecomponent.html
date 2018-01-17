@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-sm-12" style="padding:0px">
+      <ul>
+         <li>
+          <a (click)="newResourceClick()">Create a Resource</a>
+        </li>
+        <!--<li>
+          <a (click)="newResourceEventClick()">Create a Event</a>
+        </li>-->
+        <li>
+          <a (click)="resourceSummaryClick()">Resource Summary</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-12">
+      <mat-input-container style="width: 100%">
+        <input matInput placeholder="Search Resources" [matAutocomplete]="auto" [formControl]="resourceCtrl" [(ngModel)]="resourceModel" (ngModelChange)="onChange($event)">
+      </mat-input-container>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let resource of filteredResources | async" [value]="resource">
+          {{ resource }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+</div>

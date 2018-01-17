@@ -1,0 +1,127 @@
+<form class="form-horizontal" novalidate (ngSubmit)="onSubmit(projectNewFrm)" [formGroup]="projectNewFrm">
+  <!--<fieldset>
+    <legend>Legend</legend>-->
+  <div class="form-group">
+    <!--<label for="inputEmail" class="col-lg-2 control-label">Project Name</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <input type="text" class="form-control" id="" placeholder="Project Name" formControlName="ProjectName">
+      <control-messages [control]="projectNewFrm.controls.ProjectName"></control-messages>
+    </div>
+  </div>
+  <!--<div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Checkbox
+          </label>
+        </div>
+      </div>
+    </div>-->
+  <div class="form-group">
+    <!--<label for="textArea" class="col-lg-2 control-label">Description</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <textarea class="form-control" placeholder="Project Description" rows="5" id="textArea" formControlName="ProjectDesc"></textarea>
+      <control-messages [control]="projectNewFrm.controls.ProjectDesc"></control-messages>
+      <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+    </div>
+  </div>
+  <!--<owl-date-time [locale]="en"></owl-date-time>-->
+  <div class="form-group">
+    <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <mat-form-field>
+        <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a date" [formControl]="projectStartDateControl" [(ngModel)]="projectStartDateBind">
+        <mat-error *ngIf="projectStartDateControl.hasError('required')">
+          Start date is <strong>required</strong>
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #startdatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!--<control-messages [control]="projectNewFrm.controls.ProjectStartDate"></control-messages>-->
+  </div>
+  <div class="form-group">
+    <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
+    <div class="col-md-6 col-md-offset-1">
+      <mat-form-field>
+        <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a date" [formControl]="projectEndDateControl" [(ngModel)]="projectEndDateBind">
+        <mat-error *ngIf="projectEndDateControl.hasError('required')">
+          End date is <strong>required</strong>
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #enddatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!--<control-messages [control]="projectNewFrm.controls.ProjectEndDate"></control-messages>-->
+  </div>
+  <!--<div class="form-group">
+      <label class="col-lg-2 control-label">Radios</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            Option one is this
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else
+          </label>
+        </div>
+      </div>
+    </div>-->
+  <!--<div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Selects</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <br>
+        <select multiple="" class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>-->
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-1">
+      <button type="submit" [disabled]="projectNewFrm.invalid || projectStartDateControl.invalid ||projectEndDateControl.invalid"
+        class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-default">Cancel</button>
+
+    </div>
+  </div>
+  <!--</fieldset>-->
+</form>
+
+<!--<button (click)="showDialog = !showDialog" class="btn">Open</button>-->
+
+<app-onsubmit-projectdetail [(visible)]="showDialog">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+    
+      <span style="font-size: 36px;padding-left: 61px;">Success</span>
+      <br/>
+      <span style="padding: 10px;">Please continue for resource allocation</span>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-6 col-lg-6 col-xs-6">
+      <button (click)="GotoHomePage()" class="btn" style="background: #0a6db1;;color: white;">Cancel</button>
+    </div>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-xs-push-1"style="padding-left: 32px;">
+      <button (click)="NewProjectResorceAllocation()" type="button" autofocus class="btn" style="background: #0a6db1;;color: white;">Continue</button>
+    </div>
+  </div>
+
+</app-onsubmit-projectdetail>

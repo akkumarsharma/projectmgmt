@@ -1,0 +1,73 @@
+@media (min-width: 768px) {
+  .headMsg {
+    padding-left:83px;
+  }
+}
+
+
+
+.steps {
+  margin: 40px;
+  padding: 0;
+  overflow: hidden;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+em {
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+li {
+  float: left;
+  margin-left: 0;
+  width: 150px; /* 100 / number of steps */
+  height: 70px; /* total height */
+  list-style-type: none;
+  padding: 5px 5px 5px 30px; /* padding around text, last should include arrow width */
+  border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+  position: relative;
+  margin:0 30px;
+}
+
+
+li::after {
+  z-index: 1; /* need to bring this above the next item */
+  position: absolute;
+  top: 0;
+  right: -25px; /* arrow width (negated) */
+  display: block;
+  border-left: 25px solid #0a6db1;; /* width: arrow width */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width:0;
+  height:0;
+  content: " ";
+}
+
+li.inactiveleft{
+    opacity: 0.6;
+    cursor: pointer;
+}
+li.inactiveright{
+    opacity: 0.3;
+}
+/* Setup colors (both the background and the arrow) */
+
+/* Completed */
+li { background-color: #0a6db1; }
+li::after { border-left-color: #0a6db1; }
+
+/* Current */
+li.current { background-color: #C36615; }
+li.current::after { border-left-color: #C36615; }
+
+/* Following */
+li.current ~ li { background-color: #EBEBEB; }
+li.current ~ li::after {	border-left-color: #EBEBEB; }
+
+/* Hover for completed and current */
+li:hover {background-color: #555;}
+li:hover::after {border-left-color: #555;}

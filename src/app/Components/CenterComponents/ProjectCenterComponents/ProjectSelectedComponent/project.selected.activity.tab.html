@@ -1,0 +1,23 @@
+<div class="row">
+    <table class="table table-bordered" *ngIf="ActivityDetailForTab.length>0 && ActivityDetailForTab !=undefined">
+        <thead>
+            <tr>
+                <th>ActivityName</th>
+                <th>ActivityDesc</th>
+                <th>ActivityStartDate</th>
+                <th>ActivityEndDate</th>
+                <th *ngIf="!IsFromProjectSelected">Project</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of ActivityDetailForTab">
+                <td><span [ngClass]="CheckIfSubActivityExist(a.ActivityId)" (click)="openDialog(a.ActivityId)">
+                    {{a.ActivityName}}</span></td>
+                <td>{{a.ActivityDesc}}</td>
+                <td>{{a.ActivityStartDate}}</td>
+                <td>{{a.ActivityEndDate}}</td>
+                <td *ngIf="!IsFromProjectSelected">{{a.ProjectName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

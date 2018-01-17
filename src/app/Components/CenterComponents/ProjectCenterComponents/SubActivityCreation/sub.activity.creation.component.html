@@ -1,0 +1,62 @@
+<div class="col-lg-12 col-sm-12 col-md-12 col-md-offset-1">
+    <div class="row" style="margin-bottom:34px;">
+        <span style="color: #0a6db1;
+    font-size: 17px;
+    font-style: underline;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;" (click)="AddNewActivity()">{{title__add_cancel_activity}}</span>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" [hidden]="!isShowSubActivityForm">
+            <sub-activity-form (cancelSubActivityCreation)="cancelSubActivityCreation()" (subActivityModelToAdd)="subActivityModelToAdd($event)"
+            [NewId]="NewId" (IsEditModeUpdate)="IsEditModeUpdate($event)"></sub-activity-form>
+        </div>
+
+
+        <div [class]="classesToApply">
+            <div [@AnimateGrid]="stateName" (@AnimateGrid.done)="AnimationEnd()" class="row">
+
+                <div *ngIf="SubActivityList ==null || SubActivityList ==undefined || SubActivityList.length==0" style="text-align: center;background: #0a6db1;padding: 6px;color: white;">
+                    No Sub activity created yet for {{NewId}}
+                </div>
+                <div *ngIf="SubActivityList !=null && SubActivityList !=undefined && SubActivityList.length>0" style="background: #0a6db1">
+                    <div class="row" style="font-size: 16px;color: white;padding-top: 5px;padding-left: 20px;">
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">ActivityName</div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngIf="IsShowDetailActivityGrid">Description</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="IsShowDetailActivityGrid">StartDate</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="IsShowDetailActivityGrid">EndDate</div>
+                    </div>
+                    <div class="row" *ngFor="let r of SubActivityList;let i = index" style="padding-top: 6px;padding-left: 25px;width: 100%;
+    margin-left: 0px;background:azure;border-left: 2px solid #0a6db1;
+    border-right: 2px solid #0a6db1;border-bottom: 1px solid #0a6db1;
+    padding-bottom: 6px;">
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            {{r.SubActivityName}}
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngIf="IsShowDetailActivityGrid">
+
+                            {{r.SubActivityDesc}}
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="IsShowDetailActivityGrid">
+                            {{r.SubActivityStartDate}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="IsShowDetailActivityGrid">
+                            {{r.SubActivityEndDate}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="float:right;padding:0;">
+                            <img (click)="editSubActivityItem(r)" src="assets/Images/edit-icon-15.png" style="height: 20px;cursor: pointer;">
+                            <img (click)="deleteSubActivityItem(r.SubActivityId)" src="assets/Images/delete_icon.png" style="height: 20px;cursor: pointer;">
+                            <!--<img (click)="editSubActivityItem(r)" src="../../../../assets/Images/edit-icon-15.png" style="height: 20px;cursor: pointer;">
+                            <img (click)="deleteSubActivityItem(r.SubActivityId)" src="../../../../assets/Images/delete_icon.png" style="height: 20px;cursor: pointer;">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

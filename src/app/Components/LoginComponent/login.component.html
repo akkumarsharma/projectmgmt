@@ -1,0 +1,46 @@
+
+<div class="container" *ngIf="IsLoginForm">
+    <div class="wrapper">
+        <form novalidate (ngSubmit)="onSubmitLogin(loginForm)" [formGroup]="loginForm" class="form-signin">
+            <img src="assets/Images/Project-Management.jpg" width="100%">
+            <h3 class="form-signin-heading">Welcome! Please Sign In</h3>
+            <hr class="colorgraph"><br>
+            <span style="color:red;">{{msg}}</span>
+            <input type="text" class="form-control" name="Username" placeholder="Username" formControlName="UserName">     
+            <control-messages-form [control]="loginForm.controls.UserName"></control-messages-form>
+
+            <input type="password" class="form-control" name="Password" placeholder="Password" formControlName="Password">
+            <control-messages-form [control]="loginForm.controls.Password"></control-messages-form>
+
+            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" [disabled]="loginForm.invalid">Login</button>
+            <span class="linkStyle" (click)="goToRegister()">Register here</span>
+        </form>
+    </div>
+</div>
+<div class="container" *ngIf="IsRegisterForm">
+    <div class="wrapper">
+        <form novalidate (ngSubmit)="onSubmitRegister(registerForm)" [formGroup]="registerForm" class="form-signin">
+            <img src="assets/Images/Project-Management.jpg" width="100%">
+            <h3 class="form-signin-heading">Welcome! Please Sign In</h3>
+            <hr class="colorgraph"><br>
+            <span style="color:red;">{{msg}}</span>
+            <input type="text" class="form-control" name="Name" placeholder="Name" formControlName="Name">        
+            <control-messages-form [control]="registerForm.controls.Name"></control-messages-form>
+
+            <input type="text" class="form-control" name="Email" placeholder="Email" formControlName="Email">   
+            <control-messages-form [control]="registerForm.controls.Email"></control-messages-form> 
+
+            <input [ngClass]="styleusername()" type="text" class="form-control" name="Username" placeholder="Username" formControlName="UserName" 
+            (keyup)="checkIfUsernameAvailable()" 
+            (onfocusout)="userNameOnFocusOut()">  
+            <!--<img *ngIf="showuserAvalImage" src="assets/Images/tick_green.png" style="height: 2%;width: 11%;">-->
+            <control-messages-form [control]="registerForm.controls.UserName"></control-messages-form>
+            <span *ngIf="showNonAvalMsg" style="color:red;">{{user_exist_msg}}</span>    
+            <input type="password" class="form-control" name="Password" placeholder="Password" formControlName="Password">
+            <control-messages-form [control]="registerForm.controls.Password"></control-messages-form>
+
+            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" [disabled]="!registerForm.valid || !this.isUserAvailable">Register</button>
+            <span class="linkStyle" (click)="goToLogin()">Login here</span>
+        </form>
+    </div>
+</div>

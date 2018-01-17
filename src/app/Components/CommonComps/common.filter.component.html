@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+        <mat-select placeholder="Search Criteria" [(ngModel)]="selectedCriteriaValue" (ngModelChange)="onChange($event)" style="padding-top:0px;">
+            <mat-option *ngFor="let criteria of SearchCriteria" [value]="criteria.viewValue">
+                {{ criteria.viewValue }}
+            </mat-option>
+        </mat-select>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" placeholder="Search here" [(ngModel)]="FilterVal" (ngModelChange)="filterResources()"
+                [disabled]="isCriteriaNotSelected">
+        </div>
+    </div>
+
+</div>
+<br>
+  <div class="row NoRecord" *ngIf="collectionOut.length==0 || collectionOut ==undefined">
+  No Records found
+</div>
