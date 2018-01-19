@@ -3,6 +3,7 @@
 export class ApiActionList {
    public static get Post_Resource_New(): string { return "resource/PostResourceNew"; };
    public static get Get_Resource_List(): string { return "resource/GetAllResources"; };
+   public static get Get_Resource_UniqueId_Availablity(): string {return "resource/GetResourceUniqueIdAvailability/?uniqueId="}
 
    public static get Post_Project_New(): string { return "project/PostProjectNew"; };
    public static get Get_Project_List(): string { return "project/GetAllProjects"; };

@@ -26,7 +26,7 @@ export class ProjectSelectedResourceExtraWindow implements OnChanges {
     eventStartDateBind: string;
     eventEndDateBind: string;
     percentageAllocation: number;
-    
+      minDate = new Date();
     constructor(private appcommService: ApiCommunicationService,private datepipe: DatePipe){
 
     }

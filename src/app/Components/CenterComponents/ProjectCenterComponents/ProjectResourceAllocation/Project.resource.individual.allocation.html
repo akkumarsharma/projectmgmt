@@ -39,7 +39,7 @@
                         <div class="form-group">
                                 <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
                                 <mat-form-field style="width:100%">
-                                        <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a start date" [formControl]="eventStartDateControl" [(ngModel)]="eventStartDateBind"
+                                        <input matInput [min]="minDate" [matDatepicker]="startdatepicker" placeholder="Choose a start date" [formControl]="eventStartDateControl" [(ngModel)]="eventStartDateBind"
                                                 (ngModelChange)="onIsAllocateResource()">
                                         <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
                                         <mat-datepicker #startdatepicker></mat-datepicker>
@@ -52,7 +52,7 @@
                                 <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
 
                                 <mat-form-field style="width:100%">
-                                        <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a end date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind"
+                                        <input matInput [min]="minDate" [matDatepicker]="enddatepicker" placeholder="Choose a end date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind"
                                                 (ngModelChange)="onIsAllocateResource()">
                                         <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
                                         <mat-datepicker #enddatepicker></mat-datepicker>

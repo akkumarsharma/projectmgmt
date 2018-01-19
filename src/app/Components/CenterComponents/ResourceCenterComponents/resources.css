@@ -31,6 +31,12 @@ thead{
     font-weight: 600;
 }
 
+.funkystyling {
+    background: white url(/assets/Images/tick_green.png) right no-repeat;
+    padding-right: 17px;
+    background-size: 6% 73%;
+}
+
 /*.hoverEffect:hover{
   background-color: #FAEBD7;
 }*/

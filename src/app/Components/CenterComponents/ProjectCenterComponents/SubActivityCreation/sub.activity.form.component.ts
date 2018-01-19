@@ -28,6 +28,7 @@ export class SubActivityFormComponent {
   SubActivityDesc: string;
   SubActivityName: string;
   SubActivityId: string;
+    minDate = new Date();
   ngOnInit(): void {
     this.subActivityForm = this.fb.group({
       EventNameControl: ['', Validators.required],

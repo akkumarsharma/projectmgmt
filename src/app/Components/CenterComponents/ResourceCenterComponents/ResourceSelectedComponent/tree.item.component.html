@@ -1,9 +1,15 @@
-<!--<img src="assets/Images/Root.jpg" *ngIf="IsFromParent && data.Name !='' && data.Name !=undefined" style="width: 30px;">-->
+<span style="display:inline-block"><img class="collapseImgNode minusClass" (click)="collapseUl($event)" src="assets/Images/minus.jpg" [attr.id]="'minus_'+dataDown.Id"
+ *ngIf="dataDown.Children && dataDown.Children.length > 0">
+<img class="collapseImgNode plusClass" (click)="collapseUl($event)" src="assets/Images/add.png" [attr.id]="'plus_'+dataDown.Id" 
+ *ngIf="dataDown.Children && dataDown.Children.length > 0">
+ </span>
+<span [ngClass]="IsFromParent==true? 'yellowNode': 'treeNodeStyle'" *ngIf="dataDown.Name !='' && dataDown.Name !=undefined">{{dataDown.Name}}</span>
+<span *ngIf="dataDown.Name =='' || dataDown.Name ==undefined">No reportee Found</span>
+<ul  [attr.id]="'ul_'+dataDown.Id" class="ulTreeNode ulClass" *ngIf="dataDown.Children && dataDown.Children.length > 0">
+    <li *ngFor="let child of dataDown.Children">
+        <tree-item [dataDown]="child" [IsFromParent]="false"></tree-item>
+    </li>
+</ul>
 
-    <span  [ngClass]="IsFromParent==true? 'yellowNode': 'treeNodeStyle'" *ngIf="dataDown.Name !='' && dataDown.Name !=undefined">{{dataDown.Name}}</span>
-    <span *ngIf="dataDown.Name =='' || dataDown.Name ==undefined">No reportee Found</span>
-    <ul class="ulTreeNode" *ngIf="dataDown.Children && dataDown.Children.length > 0">
-        <li *ngFor="let child of dataDown.Children">
-            <tree-item [dataDown]="child" [IsFromParent]="false"></tree-item>
-        </li>
-    </ul>
+
+<!--&& nodeStatus('minus_'+dataDown.Id)-->

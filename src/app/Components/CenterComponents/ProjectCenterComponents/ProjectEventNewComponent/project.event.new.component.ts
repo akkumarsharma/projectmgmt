@@ -36,6 +36,7 @@ export class ProjectEventNewComponent implements OnInit {
    projectInfo:NewProjectDetailModel[];
   filteredProjects: any;
   NewActivityId:string;
+    minDate = new Date();
   ngOnInit(): void {
     this.projectEventNewFrm = this.fb.group({
       EventNameControl: ['', Validators.required],

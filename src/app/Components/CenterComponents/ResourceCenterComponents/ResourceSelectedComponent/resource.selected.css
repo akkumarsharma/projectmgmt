@@ -132,6 +132,10 @@ ul.ulTreeNode li:last-child:before {
     margin: 0 0 10px 0;
 }
 
+.parentTreeNodeArrow{
+    margin: 0 0 0 5px;
+}
+
 .yellowNode{
         color: white;
     text-shadow: 2px 2px 4px #000000;
@@ -140,9 +144,9 @@ ul.ulTreeNode li:last-child:before {
     background: crimson;
 }
 
-
-.parentTreeNodeArrow{
-    margin: 0 0 0 5px;
+.collapseImgNode{
+    cursor: pointer;
+    width: 15px
 }
 
 

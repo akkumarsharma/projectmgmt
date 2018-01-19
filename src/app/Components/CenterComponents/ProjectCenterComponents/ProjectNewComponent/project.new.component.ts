@@ -40,7 +40,7 @@ export class ProjectNewComponent implements OnInit {
   projectStartDateBind: string;
   projectEndDateBind: string;
   NewProjectCode:string;
-
+  minDate = new Date();
   //start dialog
   showDialog = false;
   //end dialog

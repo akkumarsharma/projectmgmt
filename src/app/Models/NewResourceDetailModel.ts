@@ -4,4 +4,6 @@ export class NewResourceDetailModel {
     public ResourceName: string;
     public ResourceSupervisor: string;
     public ResourceDOJ: string;
+    public ResourceEmail:string;
+    public SGUniqueId:string;
 }

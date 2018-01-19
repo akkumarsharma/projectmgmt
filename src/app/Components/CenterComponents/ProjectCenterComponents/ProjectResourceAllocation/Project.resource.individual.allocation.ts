@@ -8,7 +8,9 @@ import {
     NgModule,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
+    OnChanges,
+    SimpleChanges
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ResourceModel } from '../../../../Models/ResourceModel';
@@ -19,39 +21,41 @@ import { DatePipe } from '@angular/common';
     selector: 'project-resource-individual-allocation',
     templateUrl: './project.resource.individual.allocation.html',
     styleUrls: ['project.resource.css'],
-    
+
 })
-export class ProjectResourceIndividualAllocation {
+export class ProjectResourceIndividualAllocation implements OnChanges{
     @Output() resourceProjectModelVariable = new EventEmitter<ResourceProjectAllocationDetailModel>();
     @Output() ClearResourceProjectAllocation = new EventEmitter<string>();
     @Input('resourceDetail') resourceDetail: ResourceModel;
     @Input('changeCap') changeCap: string;
     @Input('isCurrentResourceAllocatedList') isCurrentResourceAllocatedList: tempModelResourceAllocationCheck[];
-    @Input('reflectChangeInputProp') reflectChangeInputProp:string;
+    @Input('reflectChangeInputProp') reflectChangeInputProp: string;
     @Output() reflectChangeInputPropParent = new EventEmitter();
-    addOrUpdateAfterSubmit:boolean=false;
+    addOrUpdateAfterSubmit: boolean = false;
     eventStartDateControl: FormControl;
     eventEndDateControl: FormControl;
-    eventStartDateBind: Date = new Date("February 4, 2016 10:13:00");
-    eventEndDateBind: Date = new Date("February 4, 2017 10:13:00");
+    eventStartDateBind: Date = new Date();
+    eventEndDateBind: Date = new Date();
     percentageAllocation: number = 100;
     IsAllocationCheckBoxModel: boolean = false;
     initialized = false;
+    minDate = new Date();
+
     ngOnInit(): void {
         this.eventStartDateControl = new FormControl()
         this.eventEndDateControl = new FormControl()
         this.initialized = true;
         this.IsAllocationCheckBoxModel = false;
-        this.addOrUpdateAfterSubmit=false;
+        this.addOrUpdateAfterSubmit = false;
         if (this.isCurrentResourceAllocatedList != null && this.isCurrentResourceAllocatedList.length != 0
-        && this.isCurrentResourceAllocatedList.filter(a => a.resId == this.resourceDetail.ResourceId).length != 0) {
+            && this.isCurrentResourceAllocatedList.filter(a => a.resId == this.resourceDetail.ResourceId).length != 0) {
             this.IsAllocationCheckBoxModel = this.isCurrentResourceAllocatedList.filter(a => a.resId == this.resourceDetail.ResourceId)[0].isAllocatedVal;
         }
 
         if (this.IsAllocationCheckBoxModel == true) {
             this.IsAllocationCheckBoxModel = true;
             this.isResourceAllocated = true;
-            this.addOrUpdateAfterSubmit=true;
+            this.addOrUpdateAfterSubmit = true;
         }
     }
     constructor(private datepipe: DatePipe) { }
@@ -65,7 +69,7 @@ export class ProjectResourceIndividualAllocation {
         else {
             this.isResourceAllocated = false;
             this.ClearResourceProjectAllocation.emit(this.resourceDetail.ResourceId);
-            this.addOrUpdateAfterSubmit=false;
+            this.addOrUpdateAfterSubmit = false;
         }
     }
 
@@ -79,17 +83,17 @@ export class ProjectResourceIndividualAllocation {
 
         return text;
     }
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         if (this.initialized == true) {
             if (this.changeCap == "1") {
                 this.IsAllocationCheckBoxModel = true;
                 this.isResourceAllocated = true;
                 this.reflectChangeInputPropParent.emit();
-        }
+            }
             if (this.changeCap == "2") {
                 this.IsAllocationCheckBoxModel = false;
                 this.isResourceAllocated = false;
-                this.addOrUpdateAfterSubmit=false;
+                this.addOrUpdateAfterSubmit = false;
                 this.reflectChangeInputPropParent.emit();
             }
         }
@@ -100,6 +104,7 @@ export class ProjectResourceIndividualAllocation {
         model.StartDate = this.datepipe.transform(this.eventStartDateBind, 'yyyy-MM-dd');
         model.EndDate = this.datepipe.transform(this.eventEndDateBind, 'yyyy-MM-dd');
         model.ResourceId = this.resourceDetail.ResourceId;
+         model.ResourceSupervisor= this.resourceDetail.ResourceSupervisor;
         model.AllocationPercentage = this.percentageAllocation;
         model.IsAllocation = true;
         this.resourceProjectModel = model;
@@ -110,7 +115,7 @@ export class ProjectResourceIndividualAllocation {
             this.isResourceAllocated = true;
             this.FillResourceProjectModel();
             this.resourceProjectModelVariable.emit(this.resourceProjectModel);
-            this.addOrUpdateAfterSubmit=true;
+            this.addOrUpdateAfterSubmit = true;
         }
     }
 

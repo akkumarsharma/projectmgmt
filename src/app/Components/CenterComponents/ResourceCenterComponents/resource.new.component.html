@@ -7,17 +7,33 @@
     </div>
     <div class="form-group">
         <div class="col-md-6 col-md-offset-1">
+            <input type="text" class="form-control" name="Email" placeholder="Email" formControlName="ResourceEmail">
+            <control-messages-form [control]="resourceNewForm.controls.ResourceEmail"></control-messages-form>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-1">
+            <input  [ngClass]="styleSGUniqueId()" type="text" class="form-control" name="SGUniqueId" placeholder="SG Unique Id" formControlName="SGUniqueId"
+                (keyup)="checkIfUniqueIdAvailable()">
+            <!--<img *ngIf="showuserAvalImage" src="assets/Images/tick_green.png" style="height: 2%;width: 11%;">-->
+            <control-messages-form [control]="resourceNewForm.controls.SGUniqueId"></control-messages-form>
+            <span *ngIf="showNonAvalMsg" style="color:red;">{{unqueId_exist_msg}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-1">
             <!--<input type="text" class="form-control" id="" placeholder="Resource supervisor" formControlName="ResourceSupervisor">
             <control-messages [control]="resourceNewForm.controls.ResourceSupervisor"></control-messages>
             " "-->
-         <mat-input-container>
-        <input matInput [(ngModel)]="ResourceSupervisor" placeholder="Resource supervisor" [matAutocomplete]="auto" [formControl]="supervisorCtrl" (ngModelChange)="onChangeSupervisorVal($event)"  >
-      </mat-input-container>
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let supervisor of filteredSupervisors | async" [value]="supervisor">
-          {{ supervisor }}
-        </mat-option>
-      </mat-autocomplete>
+            <mat-input-container>
+                <input matInput [(ngModel)]="ResourceSupervisor" placeholder="Resource supervisor" [matAutocomplete]="auto" [formControl]="supervisorCtrl"
+                    (ngModelChange)="onChangeSupervisorVal($event)">
+            </mat-input-container>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let supervisor of filteredSupervisors | async" [value]="supervisor">
+                    {{ supervisor }}
+                </mat-option>
+            </mat-autocomplete>
         </div>
         <div class="col-md-6 col-md-offset-1" *ngIf="isErrorMsg" style="color:red;">Give input from list only!!!</div>
     </div>
@@ -35,7 +51,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-6 col-md-offset-1">
-            <button type="submit" [disabled]="resourceNewForm.invalid || DOJControl.invalid || isErrorMsg" class="btn btn-primary">Submit</button>
+            <button type="submit" [disabled]="resourceNewForm.invalid || DOJControl.invalid || isErrorMsg || !this.isUniqueIdAvailable" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default">Cancel</button>
         </div>
     </div>

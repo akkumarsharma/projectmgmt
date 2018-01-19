@@ -40,19 +40,20 @@ export class ProjectResourceAllocationComponent implements OnInit {
     ];
     LoadResources(val: boolean): void {
         let actionName = ApiActionList.Get_Resource_List;
-        this.appcommService.getAll(actionName,true).subscribe(resources => { this.FillResourcesName(resources) });
+        this.appcommService.getAll(actionName,false).subscribe(resources => { this.FillResourcesName(resources) });
         console.log(this.NewId);
     }
 
     FillResourcesName(resources: any): void {
         // var obj: ResourceModel[] = JSON.parse(resources.text());
          resources.forEach(a=>{
-            a.ResourceSupervisor=resources.filter(b=>b.ResourceId==a.ResourceSupervisor)[0] !=undefined?resources.filter(b=>b.ResourceId==a.ResourceSupervisor)[0].ResourceName:"";
+            a.ResourceSupervisor=resources.filter(b=>b.ResourceId==a.ResourceSupervisor)[0] !=undefined || ""?resources.filter(b=>b.ResourceId==a.ResourceSupervisor)[0].ResourceName:"";
+            this.resourceModelData.push(a);
         })
-        resources.forEach(item => {
-             item.ResourceSupervisor=resources.filter(b=>b.ResourceId==item.ResourceSupervisor)[0] !=undefined?resources.filter(b=>b.ResourceId==b.ResourceSupervisor)[0].ResourceName:"";
-            this.resourceModelData.push(item);
-        });
+        // resources.forEach(item => {
+        //      item.ResourceSupervisor=resources.filter(b=>b.ResourceId==item.ResourceSupervisor)[0] !=undefined?resources.filter(b=>b.ResourceId==b.ResourceSupervisor)[0].ResourceName:"";
+        //     this.resourceModelData.push(item);
+        // });
 
     }
 

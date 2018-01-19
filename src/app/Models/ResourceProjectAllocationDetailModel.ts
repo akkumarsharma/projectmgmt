@@ -6,4 +6,5 @@ public AllocationPercentage:number;
 public StartDate:string;
 public EndDate:string;
 public IsAllocation:boolean;
+public ResourceSupervisor:string;
 }

@@ -41,7 +41,7 @@
     <!--<label for="StartdateTime" class="col-lg-2 control-label" style="margin-top:10px;">StartDate</label>-->
     <div class="col-md-6 col-md-offset-1">
       <mat-form-field>
-        <input matInput [matDatepicker]="startdatepicker" placeholder="Choose a date" [formControl]="eventStartDateControl" [(ngModel)]="eventStartDateBind">
+        <input matInput [min]="minDate" [matDatepicker]="startdatepicker" placeholder="Choose a date" [formControl]="eventStartDateControl" [(ngModel)]="eventStartDateBind">
         <mat-error *ngIf="eventStartDateControl.hasError('required')">
           Start date is <strong>required</strong>
         </mat-error>
@@ -56,7 +56,7 @@
     <!--<label for="EnddateTime" class="col-lg-2 control-label"  style="margin-top:10px;">EndDate</label>-->
     <div class="col-md-6 col-md-offset-1">
       <mat-form-field>
-        <input matInput [matDatepicker]="enddatepicker" placeholder="Choose a date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind">
+        <input matInput [min]="minDate" [matDatepicker]="enddatepicker" placeholder="Choose a date" [formControl]="eventEndDateControl" [(ngModel)]="eventEndDateBind">
         <mat-error *ngIf="eventEndDateControl.hasError('required')">
           End date is <strong>required</strong>
         </mat-error>
